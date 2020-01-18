@@ -1,0 +1,16 @@
+Package: iapdashboard
+Title: IAP dashboard
+Version: 0.0.0.9000
+Authors@R: person('David', 'Lee', email = 'david@lee269.co.uk', role = c('cre', 'aut'))
+Description: A shiny dashboard of trade data.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    shiny,
+    golem,
+    attempt,
+    DT,
+    glue,
+    htmltools
+RoxygenNote: 6.1.1
