@@ -12,5 +12,7 @@ Imports:
     attempt,
     DT,
     glue,
-    htmltools
+    htmltools,
+    pkgload,
+    magrittr
 RoxygenNote: 6.1.1
