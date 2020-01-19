@@ -1,7 +1,8 @@
 #' @import shiny
 app_ui <- function() {
   
-  x <- wellPanel(tags$h3("Hello!"))
+  x <- wellPanel(tags$h3("Hello!"),
+                 mod_country_select_ui("country_select_ui_1", data = ffd_indicators))
   
   tagList(
     # Leave this function for adding external resources
