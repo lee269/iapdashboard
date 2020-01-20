@@ -1,16 +1,41 @@
 #' @import shiny
 app_ui <- function() {
+
+# UI elements -------------------------------------------------------------
+
+  country_selector <- wellPanel(mod_country_select_ui("country_select_ui_1", data = ffd_indicators))
   
-  x <- wellPanel(tags$h3("Hello!"),
-                 mod_country_select_ui("country_select_ui_1", data = ffd_indicators))
+  flag_section <- wellPanel(
+    splitLayout(mod_country_flag_ui("country_flag_ui_1"),
+                mod_country_map_ui("country_map_ui_1"),
+                cellWidths = c("40%", "60%"))
+  )
   
+  wb_section <- wellPanel(mod_test_ui("test_ui_1")
+  )
+  
+  body_section <- mainPanel(tags$h3("Some stuff"),
+                            tags$h3("And some more stuff")
+  )
+
+  
+
+# Main dashboard ----------------------------------------------------------
+
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # List the first level UI elements here 
     fluidPage(
-      h1("iapdashboard"),
-      column(width = 3, x)
+      # titlePanel("Dashboard"),
+      column(width = 3,
+             fluidRow(country_selector),
+             fluidRow(flag_section),
+             fluidRow(wb_section)
+      ),
+      column(width = 9,
+             fluidRow(body_section)
+      )
     )
   )
 }

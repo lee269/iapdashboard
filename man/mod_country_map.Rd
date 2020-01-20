@@ -7,7 +7,7 @@
 \usage{
 mod_country_map_ui(id)
 
-mod_country_map_server(input, output, session)
+mod_country_map_server(input, output, session, dataset, country)
 }
 \arguments{
 \item{id}{shiny id}
@@ -17,6 +17,8 @@ mod_country_map_server(input, output, session)
 \item{output}{internal}
 
 \item{session}{internal}
+
+\item{width}{}
 }
 \description{
 A shiny Module.

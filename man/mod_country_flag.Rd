@@ -7,7 +7,15 @@
 \usage{
 mod_country_flag_ui(id)
 
-mod_country_flag_server(input, output, session)
+mod_country_flag_server(
+  input,
+  output,
+  session,
+  dataset,
+  country,
+  height = "100\%",
+  width = "100\%"
+)
 }
 \arguments{
 \item{id}{shiny id}
@@ -17,6 +25,19 @@ mod_country_flag_server(input, output, session)
 \item{output}{internal}
 
 \item{session}{internal}
+
+\item{dataset, }{dataset (non reactive) containing at least reporter_iso and
+urls to country flag images. Currently expect this dataset to have
+'reporter_iso' and 'png'. Should change this to specify using tidy
+evaluation in the future.}
+
+\item{country, }{list containing reactive country name (reporter_iso) to
+filter on}
+
+\item{height, }{text containing either percentage ("50%") or pixel size
+("640")}
+
+\item{width, }{text containing either percentage ("50%") or pixel size ("640")}
 }
 \description{
 A shiny Module.

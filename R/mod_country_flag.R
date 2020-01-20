@@ -7,6 +7,15 @@
 #' @param input internal
 #' @param output internal
 #' @param session internal
+#' @param dataset, dataset (non reactive) containing at least reporter_iso and
+#'   urls to country flag images. Currently expect this dataset to have
+#'   'reporter_iso' and 'png'. Should change this to specify using tidy
+#'   evaluation in the future.
+#' @param country, list containing reactive country name (reporter_iso) to
+#'   filter on
+#' @param height, text containing either percentage ("50%") or pixel size
+#'   ("640")
+#' @param width, text containing either percentage ("50%") or pixel size ("640")
 #'
 #' @rdname mod_country_flag
 #'
@@ -16,7 +25,7 @@
 mod_country_flag_ui <- function(id){
   ns <- NS(id)
   tagList(
-  
+    htmlOutput(outputId = ns("country_flag_url"))
   )
 }
     
@@ -25,9 +34,18 @@ mod_country_flag_ui <- function(id){
 #' @rdname mod_country_flag
 #' @export
 #' @keywords internal
-    
-mod_country_flag_server <- function(input, output, session){
+mod_country_flag_server <- function(input, output, session, dataset, country, height = "100%", width = "100%"){
   ns <- session$ns
+
+    country_meta <- reactive({
+    dt <- dataset %>% dplyr::filter(reporter_iso == country$country()) %>% dplyr::select(png) %>% as.character() 
+    return(dt)
+  })
+  
+  output$country_flag_url <- renderText({
+    c('<img src="', country_meta(),'", height = "', height, '", width = "', width, '">')
+  })
+  
 }
     
 ## To be copied in the UI

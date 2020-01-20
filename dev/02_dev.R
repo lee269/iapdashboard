@@ -10,6 +10,7 @@
 golem::add_module( name = "country_select" ) # Name of the module
 golem::add_module( name = "country_flag" ) # Name of the module
 golem::add_module( name = "country_map" ) # Name of the module
+golem::add_module( name = "test" ) # Name of the module
 
 ## 2.2 Add dependencies
 
