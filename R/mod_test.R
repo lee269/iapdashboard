@@ -15,8 +15,14 @@
 #' @importFrom shiny NS tagList 
 mod_test_ui <- function(id){
   ns <- NS(id)
+  
+  countries <- country_codes %>% 
+                dplyr::select(country, country_iso3) %>% 
+                tibble::deframe()
+  
   tagList(
-  textOutput(outputId = "countrytext")
+    selectInput(inputId = ns("country"), label = "pick one!", choices = countries),
+    textOutput(ns("countrytext"))
   )
 }
     
@@ -28,7 +34,7 @@ mod_test_ui <- function(id){
     
 mod_test_server <- function(input, output, session, country){
   ns <- session$ns
-  output$countreytext = renderText(country$country())
+  output$countrytext = renderText(input$country)
 }
     
 ## To be copied in the UI
