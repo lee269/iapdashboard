@@ -34,7 +34,7 @@ mod_country_flag_ui <- function(id){
 #' @rdname mod_country_flag
 #' @export
 #' @keywords internal
-mod_country_flag_server <- function(input, output, session, dataset, country, height = "100%", width = "100%"){
+mod_country_flag_server <- function(input, output, session, country, height = "100%", width = "100%"){
   ns <- session$ns
 
   flagdata <- countries

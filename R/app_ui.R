@@ -27,7 +27,7 @@ app_ui <- function() {
     golem_add_external_resources(),
     # List the first level UI elements here 
     fluidPage(
-      # titlePanel("Dashboard"),
+      titlePanel("Dashboard"),
       column(width = 3,
              fluidRow(country_selector),
              fluidRow(flag_section),

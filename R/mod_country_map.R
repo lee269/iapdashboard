@@ -20,7 +20,7 @@
 mod_country_map_ui <- function(id){
   ns <- NS(id)
   tagList(
-    plotOutput(outputId = ns("country_map_plot"))
+    plotOutput(outputId = ns("country_map_plot"), height = 100, width = 100)
   )
 }
     
