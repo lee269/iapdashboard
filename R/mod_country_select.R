@@ -15,17 +15,15 @@
 #' @keywords internal
 #' @export 
 #' @importFrom shiny NS tagList 
-mod_country_select_ui <- function(id, data, label = "Select country:"){
+mod_country_select_ui <- function(id){
   ns <- NS(id)
-  
-  # https://rpodcast.shinyapps.io/modules_article1/
-  countries <- data %>% 
-    dplyr::ungroup() %>% 
-    dplyr::select(reporter, reporter_iso) %>% 
+
+    countries <- country_codes %>% 
+    dplyr::select(country, country_iso3) %>% 
     tibble::deframe()
   
   tagList(
-    selectInput(inputId = ns("country"), label = label, choices = countries)
+    selectInput(inputId = ns("country"), label = "Choose country:", choices = countries)
   )
 }
     
@@ -37,7 +35,7 @@ mod_country_select_ui <- function(id, data, label = "Select country:"){
     
 mod_country_select_server <- function(input, output, session){
   ns <- session$ns
-  return(list(country = reactive(input$country)))
+  output$countrytext = renderText(input$country)
 }
     
 ## To be copied in the UI

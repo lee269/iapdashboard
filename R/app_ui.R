@@ -3,7 +3,7 @@ app_ui <- function() {
 
 # UI elements -------------------------------------------------------------
 
-  country_selector <- wellPanel(mod_country_select_ui("country_select_ui_1", data = ffd_indicators))
+  country_selector <- wellPanel(mod_country_select_ui("country_select_ui_1"))
   
   flag_section <- wellPanel(
     splitLayout(mod_country_flag_ui("country_flag_ui_1"),
@@ -11,11 +11,11 @@ app_ui <- function() {
                 cellWidths = c("40%", "60%"))
   )
   
-  wb_section <- wellPanel(mod_test_ui("test_ui_1")
+  wb_section <- wellPanel(tags$h4("World Bank")
   )
   
-  body_section <- mainPanel(tags$h3("Some stuff"),
-                            tags$h3("And some more stuff")
+  body_section <- mainPanel(tags$h3("Some indicators"),
+                            tags$h3("And some more indicators")
   )
 
   

@@ -5,22 +5,22 @@
 \alias{mod_country_select_server}
 \title{mod_country_select_ui and mod_country_select_server}
 \usage{
-mod_country_select_ui(id, data, label = "Select country:")
+mod_country_select_ui(id)
 
 mod_country_select_server(input, output, session)
 }
 \arguments{
 \item{id}{shiny id, see \code{shiny::\link[shiny]{NS}}}
 
-\item{data, }{dataset containing reporter and reporter_iso codes}
-
-\item{label, }{text label for the input box}
-
 \item{input}{internal}
 
 \item{output}{internal}
 
 \item{session}{internal}
+
+\item{data, }{dataset containing reporter and reporter_iso codes}
+
+\item{label, }{text label for the input box}
 }
 \description{
 A shiny Module.

@@ -30,11 +30,14 @@ mod_country_map_ui <- function(id){
 #' @export
 #' @keywords internal
     
-mod_country_map_server <- function(input, output, session, dataset, country){
+mod_country_map_server <- function(input, output, session, country){
   ns <- session$ns
-
+  
+  world <- ggplot2::map_data("world")
+  world <- world %>% dplyr::left_join(ffd_indicators, by = c("region" = "reporter"))
+  
     country_map <- reactive({
-    dt <- dataset %>% dplyr::filter(reporter_iso == country$country()) 
+    dt <- world %>% dplyr::filter(reporter_iso == country()) 
     return(dt)
   })
   

@@ -37,8 +37,10 @@ mod_country_flag_ui <- function(id){
 mod_country_flag_server <- function(input, output, session, dataset, country, height = "100%", width = "100%"){
   ns <- session$ns
 
+  flagdata <- countries
+  
     country_meta <- reactive({
-    dt <- dataset %>% dplyr::filter(reporter_iso == country$country()) %>% dplyr::select(png) %>% as.character() 
+    dt <- flagdata %>% dplyr::filter(reporter_iso == country()) %>% dplyr::select(png) %>% as.character() 
     return(dt)
   })
   
