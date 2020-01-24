@@ -9,9 +9,9 @@
 #' @param session internal
 #' @param country, list containing reactive country name (reporter_iso) to
 #'   filter on
-#' @param height, text containing either percentage ("50%") or pixel size
+#' @param height, text containing either percentage ("50\%") or pixel size
 #'   ("640")
-#' @param width, text containing either percentage ("50%") or pixel size ("640")
+#' @param width, text containing either percentage ("50\%") or pixel size ("640")
 #'
 #' @rdname mod_country_flag
 #'

@@ -7,14 +7,8 @@
 \usage{
 mod_country_flag_ui(id)
 
-mod_country_flag_server(
-  input,
-  output,
-  session,
-  country,
-  height = "100\%",
-  width = "100\%"
-)
+mod_country_flag_server(input, output, session, country,
+  height = "100\%", width = "100\%")
 }
 \arguments{
 \item{id}{shiny id}
@@ -28,10 +22,10 @@ mod_country_flag_server(
 \item{country, }{list containing reactive country name (reporter_iso) to
 filter on}
 
-\item{height, }{text containing either percentage ("50%") or pixel size
+\item{height, }{text containing either percentage ("50\%") or pixel size
 ("640")}
 
-\item{width, }{text containing either percentage ("50%") or pixel size ("640")}
+\item{width, }{text containing either percentage ("50\%") or pixel size ("640")}
 }
 \description{
 A shiny Module.

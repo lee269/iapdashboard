@@ -19,6 +19,7 @@ app_ui <- function() {
   )
   
   body_section <- mainPanel(tags$h3("Some indicators"),
+                            mod_wb_indicator_table_ui("wb_indicator_table_ui_pop"),
                             tags$h3("And some more indicators")
   )
 

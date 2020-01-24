@@ -15,5 +15,8 @@ Imports:
     glue,
     htmltools,
     pkgload,
-    magrittr
+    magrittr,
+    ggplot2,
+    dplyr,
+    tibble
 RoxygenNote: 7.0.2
