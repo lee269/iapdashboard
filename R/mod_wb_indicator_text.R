@@ -15,8 +15,9 @@
 #' @importFrom shiny NS tagList 
 mod_wb_indicator_text_ui <- function(id){
   ns <- NS(id)
-  tagList(
   
+  tagList(
+    tags$strong(textOutput(outputId = ns("indicator_text")))
   )
 }
     
@@ -26,8 +27,22 @@ mod_wb_indicator_text_ui <- function(id){
 #' @export
 #' @keywords internal
     
-mod_wb_indicator_text_server <- function(input, output, session){
+mod_wb_indicator_text_server <- function(input, output, session, country, indicator){
   ns <- session$ns
+  
+  wbdata <- wb_indicators
+  
+  wb_table <- reactive({
+    dt <- wbdata %>% dplyr::filter(reporter_iso == country(), indicatorID == indicator())
+    return(dt)
+  })
+  
+  output$indicator_text <- renderText({
+    # paste(wb_table(), indicator)
+    paste(wb_table()$indicator_short_text[1], ":", wb_table()$value[1])
+  })
+  
+  
 }
     
 ## To be copied in the UI

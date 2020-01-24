@@ -8,10 +8,14 @@ app_server <- function(input, output,session) {
   # world <- world %>% dplyr::left_join(ffd_indicators, by = c("region" = "reporter"))
   # countries <- data("countries")
   
-  
+
   # List the first level callModules here
   country <- callModule(mod_country_select_server, "country_select_ui_1")
   # country <- callModule(mod_test_server, "test_ui_1")
   callModule(mod_country_map_server, "country_map_ui_1", country = country)
   callModule(mod_country_flag_server, "country_flag_ui_1", country = country)
+  callModule(mod_wb_indicator_text_server, "wb_indicator_text_ui_pop", country = country, indicator = reactive("SP.POP.TOTL"))
+  callModule(mod_wb_indicator_text_server, "wb_indicator_text_ui_gdp", country = country, indicator = reactive("NY.GDP.PCAP.PP.KD"))
+  callModule(mod_wb_indicator_text_server, "wb_indicator_text_ui_imports", country = country, indicator = reactive("NE.IMP.GNFS.ZS"))
+  callModule(mod_wb_indicator_text_server, "wb_indicator_text_ui_bus_ease", country = country, indicator = reactive("IC.BUS.EASE.XQ"))
 }

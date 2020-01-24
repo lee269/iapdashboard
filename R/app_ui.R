@@ -11,7 +11,11 @@ app_ui <- function() {
                 cellWidths = c("40%", "60%"))
   )
   
-  wb_section <- wellPanel(tags$h4("World Bank")
+  wb_section <- wellPanel(tags$h4("World Bank indicators"),
+                          mod_wb_indicator_text_ui("wb_indicator_text_ui_pop"),
+                          mod_wb_indicator_text_ui("wb_indicator_text_ui_gdp"),
+                          mod_wb_indicator_text_ui("wb_indicator_text_ui_imports"),
+                          mod_wb_indicator_text_ui("wb_indicator_text_ui_bus_ease")
   )
   
   body_section <- mainPanel(tags$h3("Some indicators"),

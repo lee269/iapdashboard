@@ -7,10 +7,6 @@
 #' @param input internal
 #' @param output internal
 #' @param session internal
-#' @param dataset, dataset (non reactive) containing at least reporter_iso and
-#'   urls to country flag images. Currently expect this dataset to have
-#'   'reporter_iso' and 'png'. Should change this to specify using tidy
-#'   evaluation in the future.
 #' @param country, list containing reactive country name (reporter_iso) to
 #'   filter on
 #' @param height, text containing either percentage ("50%") or pixel size
