@@ -24,7 +24,10 @@ mod_country_map_server(input, output, session, country)
 
 \item{width}{in pixels or percentage}
 }
+\value{
+A ggplot outline of a country.
+}
 \description{
-A shiny Module.
+Shiny module. Generate an outline map of a country.
 }
 \keyword{internal}

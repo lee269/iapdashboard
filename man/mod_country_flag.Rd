@@ -25,9 +25,13 @@ filter on}
 \item{height, }{text containing either percentage ("50\%") or pixel size
 ("640")}
 
-\item{width, }{text containing either percentage ("50\%") or pixel size ("640")}
+\item{width, }{text containing either percentage ("50\%") or pixel size
+("640")}
+}
+\value{
+link to a flag image from Wikipedia.
 }
 \description{
-A shiny Module.
+Shiny module. Produces an html link to a country flag image.
 }
 \keyword{internal}

@@ -18,7 +18,11 @@ mod_wb_indicator_table_server(input, output, session, country, indicator)
 
 \item{session}{internal}
 }
+\value{
+a DT datatable of indicators.
+}
 \description{
-A shiny Module.
+Shiny Module. Produces a DT datatable of World Bank
+  indicators.
 }
 \keyword{internal}

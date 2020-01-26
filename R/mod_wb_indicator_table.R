@@ -1,18 +1,21 @@
 # Module UI
   
 #' @title   mod_wb_indicator_table_ui and mod_wb_indicator_table_server
-#' @description  A shiny Module.
+#' @description  Shiny Module. Produces a DT datatable of World Bank
+#'   indicators.
 #'
 #' @param id shiny id
 #' @param input internal
 #' @param output internal
 #' @param session internal
+#' 
+#' @return a DT datatable of indicators.
 #'
 #' @rdname mod_wb_indicator_table
 #'
 #' @keywords internal
-#' @export 
-#' @importFrom shiny NS tagList 
+#' @export
+#' @importFrom shiny NS tagList
 #' @importFrom rlang .data
 mod_wb_indicator_table_ui <- function(id){
   ns <- NS(id)

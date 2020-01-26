@@ -17,8 +17,16 @@ mod_wb_indicator_text_server(input, output, session, country, indicator)
 \item{output}{internal}
 
 \item{session}{internal}
+
+\item{country}{ISO3 country code}
+
+\item{indicator}{Code for World Bank indicator}
+}
+\value{
+reactive HTML of indicator text.
 }
 \description{
-A shiny Module.
+Shiny module. Produce html text to describe a World Bank
+  indicator.
 }
 \keyword{internal}

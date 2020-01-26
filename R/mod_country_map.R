@@ -1,7 +1,7 @@
 # Module UI
   
 #' @title   mod_country_map_ui and mod_country_map_server
-#' @description  A shiny Module.
+#' @description  Shiny module. Generate an outline map of a country.
 #'
 #' @param id shiny id
 #' @param input internal
@@ -10,6 +10,8 @@
 #' @param country a reactive containing a country ISO3 code
 #' @param height in pixels or percentage
 #' @param width in pixels or percentage
+#' 
+#' @return A ggplot outline of a country.
 #'
 #' @rdname mod_country_map
 #'

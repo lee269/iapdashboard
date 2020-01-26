@@ -1,19 +1,22 @@
 # Module UI
   
 #' @title   mod_ffd_indicator_table_ui and mod_ffd_indicator_table_server
-#' @description  A shiny Module.
+#' @description  Shiny module. Produces a DT datatable of trade indicators for
+#'   the Market overview section.
 #'
 #' @param id shiny id
 #' @param input internal
 #' @param output internal
 #' @param session internal
-#' @param a reactive containing a country ISO3 code 
+#' @param a reactive containing a country ISO3 code
+#'
+#' @return a rendered reactive DT datatable
 #'
 #' @rdname mod_ffd_indicator_table
 #'
 #' @keywords internal
-#' @export 
-#' @importFrom shiny NS tagList 
+#' @export
+#' @importFrom shiny NS tagList
 #' @importFrom rlang .data
 mod_ffd_indicator_table_ui <- function(id){
   ns <- NS(id)
@@ -42,7 +45,9 @@ mod_ffd_indicator_table_server <- function(input, output, session, country){
   })
   
   output$ffd_table <- DT::renderDT({
-    ffd_table()
+   DT::datatable(ffd_table(), options = list(dom = "t")) %>% 
+      DT::formatCurrency(columns = c(2, 4, 8), digits = 0) 
+      
   })
   
 }

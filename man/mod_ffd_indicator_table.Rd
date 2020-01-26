@@ -20,7 +20,11 @@ mod_ffd_indicator_table_server(input, output, session, country)
 
 \item{a}{reactive containing a country ISO3 code}
 }
+\value{
+a rendered reactive DT datatable
+}
 \description{
-A shiny Module.
+Shiny module. Produces a DT datatable of trade indicators for
+  the Market overview section.
 }
 \keyword{internal}

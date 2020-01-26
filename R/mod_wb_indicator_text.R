@@ -1,18 +1,23 @@
 # Module UI
   
 #' @title   mod_wb_indicator_text_ui and mod_wb_indicator_text_server
-#' @description  A shiny Module.
+#' @description  Shiny module. Produce html text to describe a World Bank
+#'   indicator.
 #'
 #' @param id shiny id
 #' @param input internal
 #' @param output internal
 #' @param session internal
+#' @param country ISO3 country code
+#' @param indicator Code for World Bank indicator
+#'
+#' @return reactive HTML of indicator text.
 #'
 #' @rdname mod_wb_indicator_text
 #'
 #' @keywords internal
-#' @export 
-#' @importFrom shiny NS tagList 
+#' @export
+#' @importFrom shiny NS tagList
 #' @importFrom rlang .data
 mod_wb_indicator_text_ui <- function(id){
   ns <- NS(id)

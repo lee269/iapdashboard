@@ -1,7 +1,7 @@
 # Module UI
   
 #' @title   mod_country_flag_ui and mod_country_flag_server
-#' @description  A shiny Module.
+#' @description  Shiny module. Produces an html link to a country flag image.
 #'
 #' @param id shiny id
 #' @param input internal
@@ -11,13 +11,16 @@
 #'   filter on
 #' @param height, text containing either percentage ("50\%") or pixel size
 #'   ("640")
-#' @param width, text containing either percentage ("50\%") or pixel size ("640")
+#' @param width, text containing either percentage ("50\%") or pixel size
+#'   ("640")
+#'
+#' @return link to a flag image from Wikipedia.
 #'
 #' @rdname mod_country_flag
 #'
 #' @keywords internal
-#' @export 
-#' @importFrom shiny NS tagList 
+#' @export
+#' @importFrom shiny NS tagList
 #' @importFrom rlang .data
 mod_country_flag_ui <- function(id){
   ns <- NS(id)
