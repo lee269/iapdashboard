@@ -18,8 +18,8 @@ app_ui <- function() {
                           mod_wb_indicator_text_ui("wb_indicator_text_ui_bus_ease")
   )
   
-  body_section <- mainPanel(tags$h3("Some indicators"),
-                            mod_wb_indicator_table_ui("wb_indicator_table_ui_pop"),
+  body_section <- mainPanel(tags$h3("Market overview"),
+                            mod_ffd_indicator_table_ui("ffd_indicator_table_ui_1"),
                             tags$h3("And some more indicators")
   )
 

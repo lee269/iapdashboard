@@ -22,6 +22,9 @@ mod_country_select_server(input, output, session)
 
 \item{label, }{text label for the input box}
 }
+\value{
+a reactive containing an ISO3 country code
+}
 \description{
 A shiny Module.
 }

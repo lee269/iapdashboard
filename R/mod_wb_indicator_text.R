@@ -13,6 +13,7 @@
 #' @keywords internal
 #' @export 
 #' @importFrom shiny NS tagList 
+#' @importFrom rlang .data
 mod_wb_indicator_text_ui <- function(id){
   ns <- NS(id)
   
@@ -30,10 +31,10 @@ mod_wb_indicator_text_ui <- function(id){
 mod_wb_indicator_text_server <- function(input, output, session, country, indicator){
   ns <- session$ns
   
-  wbdata <- wb_indicators
+  wbdata <- iapdashboard::wb_indicators
   
   wb_table <- reactive({
-    dt <- wbdata %>% dplyr::filter(reporter_iso == country(), indicatorID == indicator())
+    dt <- wbdata %>% dplyr::filter(.data$reporter_iso == country(), .data$indicatorID == indicator())
     return(dt)
   })
   

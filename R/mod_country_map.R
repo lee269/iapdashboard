@@ -7,16 +7,16 @@
 #' @param input internal
 #' @param output internal
 #' @param session internal
-#' @param dataset
-#' @param country
-#' @param height
-#' @param width
+#' @param country a reactive containing a country ISO3 code
+#' @param height in pixels or percentage
+#' @param width in pixels or percentage
 #'
 #' @rdname mod_country_map
 #'
 #' @keywords internal
 #' @export 
 #' @importFrom shiny NS tagList 
+#' @importFrom rlang .data
 mod_country_map_ui <- function(id){
   ns <- NS(id)
   tagList(
@@ -34,15 +34,15 @@ mod_country_map_server <- function(input, output, session, country){
   ns <- session$ns
   
   world <- ggplot2::map_data("world")
-  world <- world %>% dplyr::left_join(ffd_indicators, by = c("region" = "reporter"))
+  world <- world %>% dplyr::left_join(iapdashboard::ffd_indicators, by = c("region" = "reporter"))
   
     country_map <- reactive({
-    dt <- world %>% dplyr::filter(reporter_iso == country()) 
+    dt <- world %>% dplyr::filter(.data$reporter_iso == country()) 
     return(dt)
   })
   
   output$country_map_plot <- renderPlot({
-    ggplot2::ggplot() + ggplot2::geom_polygon(data = country_map(), ggplot2::aes(x = long, y = lat, group = group), fill = "gray50") + 
+    ggplot2::ggplot() + ggplot2::geom_polygon(data = country_map(), ggplot2::aes(x = .data$long, y = .data$lat, group = .data$group), fill = "gray50") + 
       ggplot2::coord_fixed(1.3) +
       ggplot2::theme_void() + 
       ggplot2::theme(plot.background = ggplot2::element_rect(fill = "#f5f5f5", colour = "#f5f5f5"))

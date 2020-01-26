@@ -18,6 +18,7 @@
 #' @keywords internal
 #' @export 
 #' @importFrom shiny NS tagList 
+#' @importFrom rlang .data
 mod_country_flag_ui <- function(id){
   ns <- NS(id)
   tagList(
@@ -33,10 +34,10 @@ mod_country_flag_ui <- function(id){
 mod_country_flag_server <- function(input, output, session, country, height = "100%", width = "100%"){
   ns <- session$ns
 
-  flagdata <- countries
+  flagdata <- iapdashboard::countries
   
     country_meta <- reactive({
-    dt <- flagdata %>% dplyr::filter(reporter_iso == country()) %>% dplyr::select(png) %>% as.character() 
+    dt <- flagdata %>% dplyr::filter(.data$reporter_iso == country()) %>% dplyr::select(.data$png) %>% as.character() 
     return(dt)
   })
   

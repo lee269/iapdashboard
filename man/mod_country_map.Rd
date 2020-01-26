@@ -18,7 +18,11 @@ mod_country_map_server(input, output, session, country)
 
 \item{session}{internal}
 
-\item{width}{}
+\item{country}{a reactive containing a country ISO3 code}
+
+\item{height}{in pixels or percentage}
+
+\item{width}{in pixels or percentage}
 }
 \description{
 A shiny Module.

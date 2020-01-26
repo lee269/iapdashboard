@@ -9,17 +9,20 @@
 #' @param session internal
 #' @param data, dataset containing reporter and reporter_iso codes
 #' @param label, text label for the input box
+#' 
+#' @return a reactive containing an ISO3 country code
 #'
 #' @rdname mod_country_select
 #'
 #' @keywords internal
 #' @export 
 #' @importFrom shiny NS tagList 
+#' @importFrom rlang .data
 mod_country_select_ui <- function(id){
   ns <- NS(id)
 
-    countries <- country_codes %>% 
-    dplyr::select(country, country_iso3) %>% 
+    countries <- iapdashboard::country_codes %>% 
+    dplyr::select(.data$country, .data$country_iso3) %>% 
     tibble::deframe()
   
   tagList(
