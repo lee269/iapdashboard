@@ -40,13 +40,16 @@ mod_ffd_indicator_table_server <- function(input, output, session, country){
     dt <- ffd_data %>% 
           dplyr::filter(.data$reporter_iso == country(), .data$year == max(.data$year)) %>% 
           dplyr::ungroup() %>% 
-          dplyr::select(-.data$reporter_code, -.data$reporter_iso, -.data$reporter, -.data$GBR, -.data$WLD)        
+          dplyr::mutate(o = paste("23",rag(.data$total_food_imports_rating))) %>% 
+          dplyr::select(-.data$reporter_code, -.data$reporter_iso, -.data$reporter, -.data$GBR, -.data$WLD) %>% 
+          purrr::transpose() %>% .[[1]] %>%
+          tibble::enframe()
     return(dt)
   })
   
   output$ffd_table <- DT::renderDT({
-   DT::datatable(ffd_table(), options = list(dom = "t")) %>% 
-      DT::formatCurrency(columns = c(2, 4, 8), digits = 0) 
+   DT::datatable(ffd_table(),escape = FALSE, options = list(dom = "t")) 
+      # DT::formatCurrency(columns = c(2, 4, 8), digits = 0) 
       
   })
   
