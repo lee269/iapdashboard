@@ -33,7 +33,7 @@ mod_wb_indicator_text_ui <- function(id){
 #' @export
 #' @keywords internal
     
-mod_wb_indicator_text_server <- function(input, output, session, country, indicator){
+mod_wb_indicator_text_server <- function(input, output, session, country, indicator, format = "integer"){
   ns <- session$ns
   
   wbdata <- iapdashboard::wb_indicators
@@ -45,7 +45,7 @@ mod_wb_indicator_text_server <- function(input, output, session, country, indica
   
   output$indicator_text <- renderText({
     # paste(wb_table(), indicator)
-    paste(wb_table()$indicator_short_text[1], ":", wb_table()$value[1])
+    paste0(wb_table()$indicator_short_text[1], ": ", format_number(wb_table()$value[1], format))
   })
   
   
