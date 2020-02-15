@@ -9,9 +9,6 @@ rag(n)
 \arguments{
 \item{n}{}
 }
-\value{
-
-}
 \description{
 RAG status
 }
