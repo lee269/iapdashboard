@@ -26,7 +26,7 @@ mod_country_select_ui <- function(id){
     tibble::deframe()
   
   tagList(
-    selectInput(inputId = ns("country"), label = "Choose country:", choices = countries)
+    selectInput(inputId = ns("country"), label = "Selected country:", choices = countries)
   )
 }
     

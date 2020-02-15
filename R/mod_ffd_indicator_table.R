@@ -34,21 +34,27 @@ mod_ffd_indicator_table_ui <- function(id){
 mod_ffd_indicator_table_server <- function(input, output, session, country){
   ns <- session$ns
   
+  # Kludge. See:
+  # https://stackoverflow.com/questions/48750221/dplyr-and-no-visible-binding-for-global-variable-note-in-package-check
+  . = NULL
+  
   ffd_data <- iapdashboard::ffd_indicators
   
   ffd_table <- reactive({
     dt <- ffd_data %>% 
           dplyr::filter(.data$reporter_iso == country(), .data$year == max(.data$year)) %>% 
           dplyr::ungroup() %>% 
-          dplyr::mutate(o = paste("23",rag(.data$total_food_imports_rating))) %>% 
           dplyr::select(-.data$reporter_code, -.data$reporter_iso, -.data$reporter, -.data$GBR, -.data$WLD) %>% 
+          dplyr::mutate(total_food_imports_rating = paste(.data$total_food_imports_rating, rag(.data$total_food_imports_rating))) %>% 
+          dplyr::mutate_at(c("total_food_imports_value", "uk_food_imports", "trade_value_us"), ~format_number(., "dollar")) %>% 
+          dplyr::mutate_at(c("uk_market_share", "uk_percentage"), ~format_number(., "percent")) %>% 
           purrr::transpose() %>% .[[1]] %>%
           tibble::enframe()
     return(dt)
   })
   
   output$ffd_table <- DT::renderDT({
-   DT::datatable(ffd_table(),escape = FALSE, options = list(dom = "t")) 
+   DT::datatable(ffd_table(),escape = FALSE, options = list(dom = "t"), rownames = FALSE) 
       # DT::formatCurrency(columns = c(2, 4, 8), digits = 0) 
       
   })

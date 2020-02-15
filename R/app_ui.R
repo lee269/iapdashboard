@@ -18,9 +18,9 @@ app_ui <- function() {
                           mod_wb_indicator_text_ui("wb_indicator_text_ui_bus_ease")
   )
   
-  body_section <- mainPanel(tags$h3("Market overview"),
-                            mod_ffd_indicator_table_ui("ffd_indicator_table_ui_1"),
-                            tags$h3("And some more indicators")
+  body_section <- tabsetPanel(
+                            tabPanel("Market overview", mod_ffd_indicator_table_ui("ffd_indicator_table_ui_1")),
+                            tabPanel("Detail", tags$h3("And some more indicators"))
   )
 
   
@@ -32,7 +32,7 @@ app_ui <- function() {
     golem_add_external_resources(),
     # List the first level UI elements here 
     fluidPage(
-      titlePanel("Dashboard"),
+      # titlePanel("Dashboard"),
       column(width = 3,
              fluidRow(country_selector),
              fluidRow(flag_section),

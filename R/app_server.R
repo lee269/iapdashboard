@@ -19,7 +19,7 @@ app_server <- function(input, output,session) {
   
   # World Bank indicator section
   callModule(mod_wb_indicator_text_server, "wb_indicator_text_ui_pop", country = country, indicator = reactive("SP.POP.TOTL"))
-  callModule(mod_wb_indicator_text_server, "wb_indicator_text_ui_gdp", country = country, indicator = reactive("NY.GDP.PCAP.PP.KD"))
+  callModule(mod_wb_indicator_text_server, "wb_indicator_text_ui_gdp", country = country, indicator = reactive("NY.GDP.PCAP.PP.KD"), format = "dollar")
   callModule(mod_wb_indicator_text_server, "wb_indicator_text_ui_imports", country = country, indicator = reactive("NE.IMP.GNFS.ZS"))
   callModule(mod_wb_indicator_text_server, "wb_indicator_text_ui_bus_ease", country = country, indicator = reactive("IC.BUS.EASE.XQ"))
   

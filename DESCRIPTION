@@ -19,5 +19,6 @@ Imports:
     ggplot2,
     dplyr,
     tibble,
-    rlang
+    rlang,
+    purrr
 RoxygenNote: 7.0.2
