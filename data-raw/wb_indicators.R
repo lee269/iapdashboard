@@ -1,5 +1,7 @@
 ## code to prepare `wb_indicators` dataset goes here
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(purrr)
 library(broom)
 library(wbstats)
 
@@ -13,8 +15,8 @@ all_data <- ffd_trade %>%
 
 # World Bank reference data
 # IC.BUS.EASE.XQ
-ind_ids <- c("SP.POP.TOTL", "NY.GDP.PCAP.PP.KD", "NE.IMP.GNFS.ZS", "IC.BUS.EASE.XQ")
-ind_text <- c("Population", "GDP per capita PPP", "Imports of goods and services (% GDP)", "Ease of doing business")
+ind_ids <- c("SP.POP.TOTL", "NY.GDP.PCAP.PP.KD", "NE.IMP.GNFS.ZS", "IC.BUS.EASE.XQ", "TM.VAL.FOOD.ZS.UN")
+ind_text <- c("Population", "GDP per capita PPP", "Imports of goods and services (% GDP)", "Ease of doing business", "Food (% of imports)")
 indicators <- data.frame(
   indicatorID = ind_ids,
   indicator_short_text = ind_text,

@@ -15,7 +15,8 @@ app_ui <- function() {
                           mod_wb_indicator_text_ui("wb_indicator_text_ui_pop"),
                           mod_wb_indicator_text_ui("wb_indicator_text_ui_gdp"),
                           mod_wb_indicator_text_ui("wb_indicator_text_ui_imports"),
-                          mod_wb_indicator_text_ui("wb_indicator_text_ui_bus_ease")
+                          mod_wb_indicator_text_ui("wb_indicator_text_ui_bus_ease"),
+                          mod_wb_indicator_text_ui("wb_indicator_text_ui_food_imports")
   )
   
   body_section <- tabsetPanel(
