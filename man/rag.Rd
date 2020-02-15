@@ -7,8 +7,12 @@
 rag(n)
 }
 \arguments{
-\item{n}{}
+\item{n}{an integer}
+}
+\value{
+html link to RAG image
 }
 \description{
 RAG status
 }
+\keyword{internal}

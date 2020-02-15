@@ -11,9 +11,6 @@ format_number(x, format)
 
 \item{format}{}
 }
-\value{
-
-}
 \description{
 Format numbers
 }
