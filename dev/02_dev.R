@@ -13,7 +13,7 @@ golem::add_module( name = "country_map" ) # Name of the module
 golem::add_module( name = "wb_indicator_text" ) # Name of the module
 golem::add_module( name = "wb_indicator_table" ) # Name of the module
 golem::add_module( name = "ffd_indicator_table" ) # Name of the module
-
+golem::add_module( name = "ffd_indicator_series" ) # Name of the module
 
 ## 2.2 Add dependencies
 
@@ -21,6 +21,7 @@ usethis::use_package("ggplot2") # To call each time you need a new package
 usethis::use_package("dplyr")
 usethis::use_package("tibble")
 usethis::use_package("rlang")
+usethis::use_package("echarts4r")
 ## 2.3 Add tests
 
 usethis::use_test( "app" )

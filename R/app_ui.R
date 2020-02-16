@@ -20,7 +20,7 @@ app_ui <- function() {
   )
   
   body_section <- tabsetPanel(
-                            tabPanel("Market overview", mod_ffd_indicator_table_ui("ffd_indicator_table_ui_1")),
+                            tabPanel("Market overview", mod_ffd_indicator_table_ui("ffd_indicator_table_ui_1"), mod_ffd_indicator_series_ui("ffd_indicator_series_ui_1")),
                             tabPanel("Detail", tags$h3("And some more indicators")),
                             tabPanel("To do", includeMarkdown("./docs/todo.md"))
   )

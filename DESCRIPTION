@@ -20,5 +20,6 @@ Imports:
     dplyr,
     tibble,
     rlang,
-    purrr
+    purrr,
+    echarts4r
 RoxygenNote: 7.0.2

@@ -26,4 +26,5 @@ app_server <- function(input, output,session) {
   
   # Market overview section
   callModule(mod_ffd_indicator_table_server, "ffd_indicator_table_ui_1", country = country)
+  callModule(mod_ffd_indicator_series_server, "ffd_indicator_series_ui_1", country = country)
 }
