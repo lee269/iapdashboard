@@ -21,5 +21,6 @@ Imports:
     tibble,
     rlang,
     purrr,
-    echarts4r
+    echarts4r,
+    shinyMobile
 RoxygenNote: 7.0.2

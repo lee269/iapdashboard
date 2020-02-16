@@ -22,6 +22,7 @@ usethis::use_package("dplyr")
 usethis::use_package("tibble")
 usethis::use_package("rlang")
 usethis::use_package("echarts4r")
+usethis::use_package("shinyMobile")
 ## 2.3 Add tests
 
 usethis::use_test( "app" )
