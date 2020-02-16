@@ -49,14 +49,14 @@ mod_ffd_indicator_table_server <- function(input, output, session, country){
           dplyr::mutate_at(c("total_food_imports_value", "uk_food_imports", "trade_value_us"), ~format_number(., "dollar")) %>% 
           dplyr::mutate_at(c("uk_market_share", "uk_percentage"), ~format_number(., "percent")) %>% 
           dplyr::mutate(commodity = paste0(.data$commodity, " (", .data$commodity_code, ")")) %>% 
-          dplyr::select(`Year:` = year,
-                        `Total Food Imports:` = total_food_imports_value,
-                        `Food Imports Rating:` = total_food_imports_rating,
-                        `UK Food Imports:` = uk_food_imports,
-                        `UK Market Share:` = uk_market_share,
-                        `Top export commodity:` = commodity,
-                        `Top commodity trade value:` = trade_value_us,
-                        `Top commodity % of UK trade:` = uk_percentage) %>%
+          dplyr::select(`Year:` = .data$year,
+                        `Total Food Imports:` = .data$total_food_imports_value,
+                        `Food Imports Rating:` = .data$total_food_imports_rating,
+                        `UK Food Imports:` = .data$uk_food_imports,
+                        `UK Market Share:` = .data$uk_market_share,
+                        `Top export commodity:` = .data$commodity,
+                        `Top commodity trade value:` = .data$trade_value_us,
+                        `Top commodity % of UK trade:` = .data$uk_percentage) %>%
           purrr::transpose() %>% .[[1]] %>%
           tibble::enframe()
     return(dt)
