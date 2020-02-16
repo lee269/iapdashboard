@@ -21,7 +21,7 @@
 mod_ffd_indicator_table_ui <- function(id){
   ns <- NS(id)
   tagList(
-          DT::DTOutput(outputId = ns("ffd_table"))
+          uiOutput(outputId = ns("ffd_table"))
   )
 }
     
@@ -62,8 +62,9 @@ mod_ffd_indicator_table_server <- function(input, output, session, country){
     return(dt)
   })
   
-  output$ffd_table <- DT::renderDT({
-   DT::datatable(ffd_table(),escape = FALSE, options = list(dom = "t"), rownames = FALSE) 
+  output$ffd_table <- renderUI({
+    as_f7_table(ffd_table())
+   # DT::datatable(ffd_table(),escape = FALSE, options = list(dom = "t"), rownames = FALSE) 
       # DT::formatCurrency(columns = c(2, 4, 8), digits = 0) 
       
   })

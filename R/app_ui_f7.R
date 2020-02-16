@@ -59,7 +59,7 @@ app_ui_f7 <- function() {
                                         # main content
                                         body_section
                          )
-      )
+      ) 
   )
 }
 
