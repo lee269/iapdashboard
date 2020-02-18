@@ -44,12 +44,12 @@ mod_country_map_server <- function(input, output, session, country){
   })
   
   output$country_map_plot <- renderPlot({
-    ggplot2::ggplot() + ggplot2::geom_polygon(data = country_map(), ggplot2::aes(x = .data$long, y = .data$lat, group = .data$group), fill = "gray50") + 
+    ggplot2::ggplot() + ggplot2::geom_polygon(data = country_map(), ggplot2::aes(x = .data$long, y = .data$lat, group = .data$group), fill = "white") + 
       ggplot2::coord_fixed(1.3) +
       ggplot2::theme_void() + 
-      ggplot2::theme(plot.background = ggplot2::element_rect(fill = "#f5f5f5", colour = "#f5f5f5"))
-  }, bg = "#f5f5f5")
-  
+      ggplot2::theme(plot.background = ggplot2::element_rect(fill = "#1E1E1E", colour = "#1E1E1E"))
+  }, bg = "#1E1E1E")
+  # "#f5f5f5"
 }
     
 ## To be copied in the UI
