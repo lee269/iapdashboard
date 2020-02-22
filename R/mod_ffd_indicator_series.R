@@ -44,6 +44,8 @@ mod_ffd_indicator_series_server <- function(input, output, session, country){
     
     cns <- data.frame(country = c(country()))
     
+    opts <- list(textStyle = list(color = "blue"))
+    
     ffd_series() %>% 
       echarts4r::e_charts(x = .data$year) %>% 
       echarts4r::e_x_axis(.data$year, formatter = echarts4r::e_axis_formatter("decimal")) %>% 
@@ -51,7 +53,9 @@ mod_ffd_indicator_series_server <- function(input, output, session, country){
       echarts4r::e_line(serie = .data$trade_value_us) %>% 
       echarts4r::e_tooltip(trigger = "axis") %>% 
       echarts4r::e_toolbox_feature(feature = "dataView") %>% 
-      echarts4r::e_title(as.character(echarts4r::e_country_names(cns, country, type = "iso3c")))
+      echarts4r::e_legend(show = TRUE, textStyle = list(color = "white")) %>% 
+      echarts4r::e_title(text = as.character(echarts4r::e_country_names(cns, country, type = "iso3c")), textStyle = list(color = "white")) %>% 
+      echarts4r::e_text_style(color = "white") 
     
     
     # DT::datatable(ffd_series(),escape = FALSE, options = list(dom = "t"), rownames = FALSE) 
