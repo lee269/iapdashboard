@@ -1,5 +1,5 @@
 #' @import shiny
-app_ui_f7 <- function() {
+app_ui <- function() {
 
 # UI elements -------------------------------------------------------------
 
