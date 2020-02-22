@@ -7,14 +7,8 @@
 \usage{
 mod_country_flag_ui(id)
 
-mod_country_flag_server(
-  input,
-  output,
-  session,
-  country,
-  height = "100\%",
-  width = "100\%"
-)
+mod_country_flag_server(input, output, session, country,
+  height = "100\%", width = "100\%")
 }
 \arguments{
 \item{id}{shiny id}

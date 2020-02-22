@@ -1,5 +1,5 @@
 #' @import shiny
-app_ui <- function() {
+app_ui_f7 <- function() {
 
 # UI elements -------------------------------------------------------------
 
@@ -11,7 +11,7 @@ app_ui <- function() {
                 cellWidths = c("40%", "60%"))
   )
   
-  wb_section <- wellPanel(tags$h4("World Bank indicators"),
+  wb_section <- wellPanel(tags$h2("World Bank indicators"),
                           mod_wb_indicator_text_ui("wb_indicator_text_ui_pop"),
                           mod_wb_indicator_text_ui("wb_indicator_text_ui_gdp"),
                           mod_wb_indicator_text_ui("wb_indicator_text_ui_imports"),
@@ -19,15 +19,20 @@ app_ui <- function() {
                           mod_wb_indicator_text_ui("wb_indicator_text_ui_food_imports")
   )
   
-  body_section <- tabsetPanel(
-                            tabPanel("Market overview",
+  body_section <- shinyMobile::f7Items(
+                            shinyMobile::f7Item(tabName = "market_overview",
                                      mod_ffd_indicator_table_ui("ffd_indicator_table_ui_1"),
                                      mod_ffd_indicator_series_ui("ffd_indicator_series_ui_1")),
-                            tabPanel("Detail", tags$h3("And some more indicators")),
-                            tabPanel("To do", includeMarkdown("./docs/todo.md"))
+                            shinyMobile::f7Item(tabName = "detail", tags$h3("And some more indicators")),
+                            shinyMobile::f7Item(tabName = "todo", includeMarkdown("./inst/app/www/todo.md"))
   )
 
-  
+  panel_menu <- shinyMobile::f7PanelMenu(
+                  id = "menu",
+                  shinyMobile::f7PanelItem(tabName = "market_overview", title = "Market Overview", icon = shinyMobile::f7Icon("email"), active = TRUE),
+                  shinyMobile::f7PanelItem(tabName = "detail", title = "Detail", icon = shinyMobile::f7Icon("home")),
+                  shinyMobile::f7PanelItem(tabName = "todo", title = "To do", icon = shinyMobile::f7Icon("home"))
+                )
 
 # Main dashboard ----------------------------------------------------------
 
@@ -35,17 +40,26 @@ app_ui <- function() {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # List the first level UI elements here 
-    fluidPage(
-      # titlePanel("Dashboard"),
-      column(width = 3,
-             fluidRow(country_selector),
-             fluidRow(flag_section),
-             fluidRow(wb_section)
-      ),
-      column(width = 9,
-             fluidRow(body_section)
-      )
-    )
+    shinyMobile::f7Page(title = "Dashboard", 
+                        init = shinyMobile::f7Init(skin = "md",
+                                                   theme = "dark",
+                                                   color = "yellow"),
+                        shinyMobile::f7SplitLayout(
+                                        sidebar = shinyMobile::f7Panel(inputId = "sidebar",
+                                                                       title = "My sidebar",
+                                                                       side = "left",
+                                                                       theme = "dark",
+                                                                       country_selector,
+                                                                       br(), br(), br(),
+                                                                       panel_menu,
+                                                                       flag_section,
+                                                                       wb_section
+                                        ),
+                                        navbar = shinyMobile::f7Navbar(title = "A Dashboard"),
+                                        # main content
+                                        body_section
+                         )
+      ) 
   )
 }
 
