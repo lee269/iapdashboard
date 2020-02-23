@@ -14,6 +14,8 @@ golem::add_module( name = "wb_indicator_text" ) # Name of the module
 golem::add_module( name = "wb_indicator_table" ) # Name of the module
 golem::add_module( name = "ffd_indicator_table" ) # Name of the module
 golem::add_module( name = "ffd_indicator_series" ) # Name of the module
+golem::add_module( name = "ffd_country_series" ) # Name of the module
+golem::add_module( name = "ffd_product_series" ) # Name of the module
 
 ## 2.2 Add dependencies
 

@@ -49,8 +49,8 @@ mod_ffd_indicator_series_server <- function(input, output, session, country){
     ffd_series() %>% 
       echarts4r::e_charts(x = .data$year) %>% 
       echarts4r::e_x_axis(.data$year, formatter = echarts4r::e_axis_formatter("decimal")) %>% 
-      echarts4r::e_line(serie = .data$uk_food_imports) %>% 
-      echarts4r::e_line(serie = .data$trade_value_us) %>% 
+      echarts4r::e_line(serie = .data$uk_food_imports, name = "Total Imports") %>% 
+      echarts4r::e_line(serie = .data$trade_value_us, name = "Top product") %>% 
       echarts4r::e_tooltip(trigger = "axis") %>% 
       echarts4r::e_toolbox_feature(feature = "dataView") %>% 
       echarts4r::e_legend(show = TRUE, textStyle = list(color = "white")) %>% 

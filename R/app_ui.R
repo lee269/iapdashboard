@@ -21,9 +21,13 @@ app_ui <- function() {
   
   body_section <- shinyMobile::f7Items(
                             shinyMobile::f7Item(tabName = "market_overview",
-                                     mod_ffd_indicator_table_ui("ffd_indicator_table_ui_1"),
-                                     mod_ffd_indicator_series_ui("ffd_indicator_series_ui_1")),
-                            shinyMobile::f7Item(tabName = "detail", tags$h3("And some more indicators")),
+                                                mod_ffd_indicator_table_ui("ffd_indicator_table_ui_1"),
+                                                mod_ffd_indicator_series_ui("ffd_indicator_series_ui_1")),
+                            shinyMobile::f7Item(tabName = "detail",
+                                                tags$h3("And some more indicators"),
+                                                mod_ffd_country_series_ui("ffd_country_series_ui_1"),
+                                                mod_ffd_product_series_ui("ffd_product_series_ui_1")
+                                                ),
                             shinyMobile::f7Item(tabName = "todo", includeMarkdown("./inst/app/www/todo.md"))
   )
 

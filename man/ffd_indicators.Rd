@@ -4,7 +4,7 @@
 \name{ffd_indicators}
 \alias{ffd_indicators}
 \title{Trade indicators}
-\format{An object of class \code{grouped_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 1378 rows and 14 columns.}
+\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 1377 rows and 14 columns.}
 \source{
 Comtrade \url{http://comtrade.un.org}
 }
