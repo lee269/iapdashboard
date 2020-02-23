@@ -46,13 +46,13 @@ app_ui <- function() {
     # List the first level UI elements here 
     shinyMobile::f7Page(title = "Dashboard", 
                         init = shinyMobile::f7Init(skin = "md",
-                                                   theme = "dark",
+                                                   theme = "light",
                                                    color = "yellow"),
                         shinyMobile::f7SplitLayout(
                                         sidebar = shinyMobile::f7Panel(inputId = "sidebar",
                                                                        title = "My sidebar",
                                                                        side = "left",
-                                                                       theme = "dark",
+                                                                       theme = "light",
                                                                        country_selector,
                                                                        br(), br(), br(),
                                                                        panel_menu,
