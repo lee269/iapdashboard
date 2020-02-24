@@ -20,6 +20,7 @@ app_ui <- function() {
   
   indicator_section <- shinyMobile::f7Card(mod_ffd_indicator_table_ui("ffd_indicator_table_ui_1"))
   indicator_series <- shinyMobile::f7Card(mod_ffd_indicator_series_ui("ffd_indicator_series_ui_1"))
+  to_do <- shinyMobile::f7Card(includeMarkdown("./inst/app/www/todo.md"))
   
   body_section <- shinyMobile::f7Items(
                             shinyMobile::f7Item(tabName = "market_overview",
@@ -95,7 +96,12 @@ app_ui <- function() {
                             shinyMobile::f7Tab(
                               tabName = "Details"
                               
+                            ),
+                            shinyMobile::f7Tab(
+                              tabName = "To do",
+                              to_do
                             )
+                            
                           ) #close f7Tabs
                         ) #close f7tablayoout
     ) #close f7Page
