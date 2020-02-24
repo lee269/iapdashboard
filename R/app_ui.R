@@ -52,7 +52,7 @@ app_ui <- function() {
                                         sidebar = shinyMobile::f7Panel(inputId = "sidebar",
                                                                        title = "My sidebar",
                                                                        side = "left",
-                                                                       theme = "dark",
+                                                                       theme = "light",
                                                                        country_selector,
                                                                        br(), br(), br(),
                                                                        panel_menu,
