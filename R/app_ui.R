@@ -3,21 +3,23 @@ app_ui <- function() {
 
 # UI elements -------------------------------------------------------------
 
-  country_selector <- wellPanel(mod_country_select_ui("country_select_ui_1"))
+  country_selector <- tagList(mod_country_select_ui("country_select_ui_1"))
   
-  flag_section <- wellPanel(
+  flag_section <- shinyMobile::f7Card(title = "Country",
     splitLayout(mod_country_flag_ui("country_flag_ui_1"),
-                mod_country_map_ui("country_map_ui_1"),
-                cellWidths = c("40%", "60%"))
+                mod_country_map_ui("country_map_ui_1"))
   )
   
-  wb_section <- wellPanel(tags$h2("World Bank indicators"),
-                          mod_wb_indicator_text_ui("wb_indicator_text_ui_pop"),
-                          mod_wb_indicator_text_ui("wb_indicator_text_ui_gdp"),
-                          mod_wb_indicator_text_ui("wb_indicator_text_ui_imports"),
-                          mod_wb_indicator_text_ui("wb_indicator_text_ui_bus_ease"),
-                          mod_wb_indicator_text_ui("wb_indicator_text_ui_food_imports")
+  wb_section <- shinyMobile::f7Card(title = "World Bank indicators",
+                                    mod_wb_indicator_text_ui("wb_indicator_text_ui_pop"),
+                                    mod_wb_indicator_text_ui("wb_indicator_text_ui_gdp"),
+                                    mod_wb_indicator_text_ui("wb_indicator_text_ui_imports"),
+                                    mod_wb_indicator_text_ui("wb_indicator_text_ui_bus_ease"),
+                                    mod_wb_indicator_text_ui("wb_indicator_text_ui_food_imports")
   )
+  
+  indicator_section <- shinyMobile::f7Card(mod_ffd_indicator_table_ui("ffd_indicator_table_ui_1"))
+  indicator_series <- shinyMobile::f7Card(mod_ffd_indicator_series_ui("ffd_indicator_series_ui_1"))
   
   body_section <- shinyMobile::f7Items(
                             shinyMobile::f7Item(tabName = "market_overview",
@@ -48,23 +50,56 @@ app_ui <- function() {
                         init = shinyMobile::f7Init(skin = "md",
                                                    theme = "dark",
                                                    color = "yellow"),
-                        shinyMobile::f7SplitLayout(
-                                        sidebar = shinyMobile::f7Panel(inputId = "sidebar",
-                                                                       title = "My sidebar",
-                                                                       side = "left",
-                                                                       theme = "light",
-                                                                       country_selector,
-                                                                       br(), br(), br(),
-                                                                       panel_menu,
-                                                                       flag_section,
-                                                                       wb_section
-                                        ),
-                                        navbar = shinyMobile::f7Navbar(title = "A Dashboard"),
-                                        # main content
-                                        body_section
-                         )
-      ) 
-  )
+                        shinyMobile::f7TabLayout(
+                          navbar = shinyMobile::f7Navbar(
+                            title = "IAP Dashboard navbar",
+                            left_panel = TRUE
+                          ),
+                          panels = tagList(
+                            shinyMobile::f7Panel(title = "My sidebar",
+                                                 side = "left",
+                                                 theme = "light",
+                                                 effect = "reveal",
+                                                 p("pick a country"),
+                                                 country_selector
+                            )
+                          ),
+                          shinyMobile::f7Tabs(
+                            animated = TRUE,
+                            id = "tabs",
+                            shinyMobile::f7Tab(
+                              tabName = "home",
+                              icon = shinyMobile::f7Icon("home"),
+                              active = TRUE,
+                              # top row
+                              shinyMobile::f7Row(
+                                shinyMobile::f7Col(
+                                  flag_section
+                                ),
+                                shinyMobile::f7Col(
+                                  wb_section
+                                ),
+                                shinyMobile::f7Col(),
+                                shinyMobile::f7Col()
+                              ),
+                              # second row
+                              shinyMobile::f7Row(
+                                shinyMobile::f7Col(
+                                  indicator_section
+                                ),
+                                shinyMobile::f7Col(
+                                  indicator_series
+                                )
+                              )
+                            ), #close home tab
+                            shinyMobile::f7Tab(
+                              tabName = "Details"
+                              
+                            )
+                          ) #close f7Tabs
+                        ) #close f7tablayoout
+    ) #close f7Page
+  ) #close overall taglist
 }
 
 #' @import shiny

@@ -15,7 +15,7 @@ app_server <- function(input, output,session) {
 
   # Country map and flag section
   callModule(mod_country_map_server, "country_map_ui_1", country = country)
-  callModule(mod_country_flag_server, "country_flag_ui_1", country = country)
+  callModule(mod_country_flag_server, "country_flag_ui_1", country = country, height = "100", width = "140")
   
   # World Bank indicator section
   callModule(mod_wb_indicator_text_server, "wb_indicator_text_ui_pop", country = country, indicator = reactive("SP.POP.TOTL"))
