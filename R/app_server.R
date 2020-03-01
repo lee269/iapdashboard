@@ -17,6 +17,9 @@ app_server <- function(input, output,session) {
   callModule(mod_country_map_server, "country_map_ui_1", country = country)
   callModule(mod_country_flag_server, "country_flag_ui_1", country = country, height = "100", width = "140")
   
+  # Navbar
+  callModule(mod_country_name_server, "country_name_ui_navbar", country = country)
+  
   # World Bank indicator section
   callModule(mod_wb_indicator_text_server, "wb_indicator_text_ui_pop", country = country, indicator = reactive("SP.POP.TOTL"))
   callModule(mod_wb_indicator_text_server, "wb_indicator_text_ui_gdp", country = country, indicator = reactive("NY.GDP.PCAP.PP.KD"), format = "dollar")
@@ -31,4 +34,5 @@ app_server <- function(input, output,session) {
   # Detail section
   callModule(mod_ffd_country_series_server, "ffd_country_series_ui_1", country = country)
   callModule(mod_ffd_product_series_server, "ffd_product_series_ui_1", country = country)
+  
 }

@@ -10,7 +10,3 @@ golem::document_and_reload()
 
 # Run the application
 iapdashboard::run_app()
-
-
-
-

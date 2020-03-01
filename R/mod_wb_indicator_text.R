@@ -23,7 +23,8 @@ mod_wb_indicator_text_ui <- function(id){
   ns <- NS(id)
   
   tagList(
-    tags$strong(textOutput(outputId = ns("indicator_text")))
+    tags$span(textOutput(outputId = ns("indicator_text")), style = paste0("color:", "#fff", ";"))
+    
   )
 }
     

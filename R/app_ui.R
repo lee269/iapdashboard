@@ -3,20 +3,23 @@ app_ui <- function() {
 
 # UI elements -------------------------------------------------------------
 
+  # Country select dropdown
   country_selector <- tagList(mod_country_select_ui("country_select_ui_1"))
   
-  flag_section <- shinyMobile::f7Card(title = "Country",
+  # Flag card
+  flag_section <- shinyMobile::f7Card(
     splitLayout(mod_country_flag_ui("country_flag_ui_1"),
-                mod_country_map_ui("country_map_ui_1"))
+                mod_country_map_ui("country_map_ui_1"), cellWidths = 140)
   )
   
-  wb_section <- shinyMobile::f7Card(title = "World Bank indicators",
+  wb_section <- shinyMobile::f7Card(
                                     mod_wb_indicator_text_ui("wb_indicator_text_ui_pop"),
                                     mod_wb_indicator_text_ui("wb_indicator_text_ui_gdp"),
                                     mod_wb_indicator_text_ui("wb_indicator_text_ui_imports"),
                                     mod_wb_indicator_text_ui("wb_indicator_text_ui_bus_ease"),
                                     mod_wb_indicator_text_ui("wb_indicator_text_ui_food_imports")
   )
+  
   
   indicator_section <- shinyMobile::f7Card(mod_ffd_indicator_table_ui("ffd_indicator_table_ui_1"))
   indicator_series <- shinyMobile::f7Card(mod_ffd_indicator_series_ui("ffd_indicator_series_ui_1"))
@@ -53,13 +56,13 @@ app_ui <- function() {
                                                    color = "yellow"),
                         shinyMobile::f7TabLayout(
                           navbar = shinyMobile::f7Navbar(
-                            title = "IAP Dashboard navbar",
+                            title = tags$h2(mod_country_name_ui("country_name_ui_navbar")),
                             left_panel = TRUE
                           ),
                           panels = tagList(
-                            shinyMobile::f7Panel(title = "My sidebar",
+                            shinyMobile::f7Panel(title = "Trade dashboard",
                                                  side = "left",
-                                                 theme = "light",
+                                                 theme = "dark",
                                                  effect = "reveal",
                                                  p("pick a country"),
                                                  country_selector
@@ -117,10 +120,10 @@ golem_add_external_resources <- function(){
  
   tags$head(
     golem::activate_js(),
-    golem::favicon()
+    golem::favicon(),
     # Add here all the external resources
     # If you have a custom.css in the inst/app/www
     # Or for example, you can add shinyalert::useShinyalert() here
-    #tags$link(rel="stylesheet", type="text/css", href="www/custom.css")
+    tags$link(rel="stylesheet", type="text/css", href="www/style.css")
   )
 }
