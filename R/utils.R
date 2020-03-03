@@ -1,3 +1,8 @@
+# constants
+echarts_theme <- "dark"
+
+
+
 #' RAG status
 #' 
 #' 
@@ -44,7 +49,8 @@ format_number <- function(x, format){
 
 #' Table
 #' 
-#' Create shinyMobile table.
+#' Create shinyMobile table.Plagiarised from
+#' https://github.com/JohnCoene/coronavirus/blob/master/R/utils.R
 #' 
 #' @param df Data.frame.
 #' @param card Whether to use as card.
