@@ -47,14 +47,16 @@ mod_ffd_product_series_server <- function(input, output, session, country){
     ffd_series() %>% 
       # dplyr::ungroup() %>% 
       # dplyr::filter(.data$reporter_iso == "ARG") %>% 
-      dplyr::mutate(commodity = paste0(.data$commodity, " (", .data$commodity_code, ")")) %>% 
+      dplyr::mutate(commodity = paste0(.data$commodity, " (", .data$commodity_code, ")")) %>%
+      dplyr::filter(year == max(.data$year)) %>% 
       dplyr::select(.data$year, .data$commodity, .data$trade_val) %>%  
       dplyr::group_by(.data$year) %>%
       dplyr::arrange(.data$year, -.data$trade_val) %>% 
       dplyr::slice(1:20) %>% 
+      dplyr::arrange(.data$trade_val) %>% 
       echarts4r::e_charts(x = commodity) %>%
       echarts4r::e_bar(serie = trade_val) %>% 
-      echarts4r::e_flip_coords() %>% 
+      # echarts4r::e_flip_coords() %>% 
       echarts4r::e_tooltip(trigger = "axis") %>% 
       echarts4r::e_legend(show = TRUE, orient = "vertical", right = 10, top = 20, bottom = 20, textStyle = list(color = "white")) %>% 
       echarts4r::e_title(text = as.character(echarts4r::e_country_names(cns, country, type = "iso3c")), textStyle = list(color = "white"))

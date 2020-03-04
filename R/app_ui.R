@@ -12,6 +12,7 @@ app_ui <- function() {
                 mod_country_map_ui("country_map_ui_1"), cellWidths = 140)
   )
   
+  # World Bank indicator card
   wb_section <- shinyMobile::f7Card(
                                     mod_wb_indicator_text_ui("wb_indicator_text_ui_pop"),
                                     mod_wb_indicator_text_ui("wb_indicator_text_ui_gdp"),
@@ -20,11 +21,23 @@ app_ui <- function() {
                                     mod_wb_indicator_text_ui("wb_indicator_text_ui_food_imports")
   )
   
-  
+  # FFD indicator card
   indicator_section <- shinyMobile::f7Card(mod_ffd_indicator_table_ui("ffd_indicator_table_ui_1"))
+  
+  # FFD indicator series card
   indicator_series <- shinyMobile::f7Card(mod_ffd_indicator_series_ui("ffd_indicator_series_ui_1"))
+  
+  # Top country chart
+  top_country_chart <- shinyMobile::f7Card(mod_ffd_country_series_ui("ffd_country_series_ui_1"), title = "Top countries")
+  
+  # Top product chart
+  top_product_chart <- shinyMobile::f7Card(mod_ffd_product_series_ui("ffd_product_series_ui_1"), title = "Top products")
+  
+  # To do text
   to_do <- shinyMobile::f7Card(includeMarkdown("./inst/app/www/todo.md"))
   
+  
+  # Old stuff
   body_section <- shinyMobile::f7Items(
                             shinyMobile::f7Item(tabName = "market_overview",
                                                 mod_ffd_indicator_table_ui("ffd_indicator_table_ui_1"),
@@ -72,7 +85,7 @@ app_ui <- function() {
                             animated = TRUE,
                             id = "tabs",
                             shinyMobile::f7Tab(
-                              tabName = "home",
+                              tabName = "Home",
                               icon = shinyMobile::f7Icon("home"),
                               active = TRUE,
                               # top row
@@ -97,7 +110,15 @@ app_ui <- function() {
                               )
                             ), #close home tab
                             shinyMobile::f7Tab(
-                              tabName = "Details"
+                              tabName = "Details",
+                              shinyMobile::f7Row(
+                                shinyMobile::f7Col(
+                                 top_country_chart 
+                                ),
+                                shinyMobile::f7Col(
+                                  top_product_chart
+                                )
+                              )
                               
                             ),
                             shinyMobile::f7Tab(
