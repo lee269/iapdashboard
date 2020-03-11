@@ -63,7 +63,7 @@ app_ui <- function() {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # List the first level UI elements here 
-    shinyMobile::f7Page(title = "Dashboard", 
+    shinyMobile::f7Page(title = "Dashboard", dark_mode = TRUE,
                         init = shinyMobile::f7Init(skin = "md",
                                                    theme = "dark",
                                                    color = "yellow"),
