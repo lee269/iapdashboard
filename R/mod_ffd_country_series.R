@@ -50,7 +50,7 @@ echarts_country_series <- function(country){
      dplyr::arrange(.data$year, -.data$trade_val) %>% 
      dplyr::slice(1:20) %>% 
      echarts4r::e_charts(x = partner) %>%
-     echarts4r::e_bar(serie = trade_val) %>% 
+     echarts4r::e_bar(serie = trade_val,itemStyle = list(color = "#ff9500")) %>% 
      # echarts4r::e_flip_coords() %>% 
      echarts4r::e_tooltip(trigger = "axis") %>% 
      echarts4r::e_legend(show = TRUE, orient = "vertical", right = 10, top = 20, bottom = 20, textStyle = list(color = "white")) %>% 

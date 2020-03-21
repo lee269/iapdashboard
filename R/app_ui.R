@@ -8,14 +8,22 @@ app_ui <- function() {
   
   # Flag card
   flag_section <- shinyMobile::f7Card(
-    splitLayout(mod_country_flag_ui("country_flag_ui_1"),
-                mod_country_map_ui("country_map_ui_1"), cellWidths = 140)
+    splitLayout(cellWidths = c(140, 140, 250),
+                mod_country_flag_ui("country_flag_ui_1"),
+                mod_country_map_ui("country_map_ui_1"),
+                tags$div(mod_wb_indicator_text_ui("wb_indicator_text_ui_pop"),
+                         mod_wb_indicator_text_ui("wb_indicator_text_ui_gdp"),
+                         mod_wb_indicator_text_ui("wb_indicator_text_ui_imports"),
+                         mod_wb_indicator_text_ui("wb_indicator_text_ui_bus_ease"),
+                         mod_wb_indicator_text_ui("wb_indicator_text_ui_food_imports")
+                         )
+                )
   )
   
   # World Bank indicator card
   wb_section <- shinyMobile::f7Card(
-                                    mod_wb_indicator_text_ui("wb_indicator_text_ui_pop"),
-                                    mod_wb_indicator_text_ui("wb_indicator_text_ui_gdp"),
+                                    # mod_wb_indicator_text_ui("wb_indicator_text_ui_pop"),
+                                    # mod_wb_indicator_text_ui("wb_indicator_text_ui_gdp"),
                                     mod_wb_indicator_text_ui("wb_indicator_text_ui_imports"),
                                     mod_wb_indicator_text_ui("wb_indicator_text_ui_bus_ease"),
                                     mod_wb_indicator_text_ui("wb_indicator_text_ui_food_imports")
@@ -64,9 +72,9 @@ app_ui <- function() {
     golem_add_external_resources(),
     # List the first level UI elements here 
     shinyMobile::f7Page(title = "Dashboard", dark_mode = TRUE,
-                        init = shinyMobile::f7Init(skin = "md",
+                        init = shinyMobile::f7Init(skin = "ios",
                                                    theme = "dark",
-                                                   color = "yellow"),
+                                                   color = "orange"),
                         shinyMobile::f7TabLayout(
                           navbar = shinyMobile::f7Navbar(
                             title = tags$h2(mod_country_name_ui("country_name_ui_navbar")),
@@ -92,12 +100,12 @@ app_ui <- function() {
                               shinyMobile::f7Row(
                                 shinyMobile::f7Col(
                                   flag_section
-                                ),
-                                shinyMobile::f7Col(
-                                  wb_section
-                                ),
-                                shinyMobile::f7Col(),
-                                shinyMobile::f7Col()
+                                )
+                                # shinyMobile::f7Col(
+                                #   wb_section
+                                # ),
+                                # shinyMobile::f7Col(),
+                                # shinyMobile::f7Col()
                               ),
                               # second row
                               shinyMobile::f7Row(
@@ -122,7 +130,7 @@ app_ui <- function() {
                               
                             ),
                             shinyMobile::f7Tab(
-                              tabName = "To do",
+                              tabName = "What is this?",
                               to_do
                             )
                             

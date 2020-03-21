@@ -23,7 +23,8 @@ mod_wb_indicator_text_ui <- function(id){
   ns <- NS(id)
   
   tagList(
-    tags$span(textOutput(outputId = ns("indicator_text")), style = paste0("color:", "#fff", ";"))
+    tags$div(textOutput(outputId = ns("indicator_text")),tags$strong(textOutput(outputId = ns("indicator_val"))),
+             style = paste0("color:", "#fff", ";"))
     
   )
 }
@@ -46,9 +47,12 @@ mod_wb_indicator_text_server <- function(input, output, session, country, indica
   
   output$indicator_text <- renderText({
     # paste(wb_table(), indicator)
-    paste0(wb_table()$indicator_short_text[1], ": ", format_number(wb_table()$value[1], format))
+    paste0(wb_table()$indicator_short_text[1], ": ")
   })
   
+  output$indicator_val <- renderText({
+    paste0(format_number(wb_table()$value[1], format))
+  })
   
 }
     
