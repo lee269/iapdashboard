@@ -23,8 +23,10 @@ mod_wb_indicator_text_ui <- function(id){
   ns <- NS(id)
   
   tagList(
-    tags$div(textOutput(outputId = ns("indicator_text")),tags$strong(textOutput(outputId = ns("indicator_val"))),
-             style = paste0("color:", "#fff", ";"))
+    tags$div(textOutput(outputId = ns("indicator_text"), inline = TRUE),
+             tags$strong(textOutput(outputId = ns("indicator_val"), inline = TRUE)),
+             style = paste0("color:", "#fff", ";"),
+             align = "left")
     
   )
 }

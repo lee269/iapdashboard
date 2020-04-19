@@ -8,7 +8,7 @@ app_ui <- function() {
   
   # Flag card
   flag_section <- shinyMobile::f7Card(
-    splitLayout(cellWidths = c(140, 140, 250),
+    splitLayout(cellWidths = c(140, 140, 300),
                 mod_country_flag_ui("country_flag_ui_1"),
                 mod_country_map_ui("country_map_ui_1"),
                 tags$div(mod_wb_indicator_text_ui("wb_indicator_text_ui_pop"),
@@ -101,11 +101,6 @@ app_ui <- function() {
                                 shinyMobile::f7Col(
                                   flag_section
                                 )
-                                # shinyMobile::f7Col(
-                                #   wb_section
-                                # ),
-                                # shinyMobile::f7Col(),
-                                # shinyMobile::f7Col()
                               ),
                               # second row
                               shinyMobile::f7Row(

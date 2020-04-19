@@ -45,17 +45,22 @@ echarts_country_series <- function(country){
      dplyr::ungroup() %>% 
      dplyr::filter(.data$reporter_iso == country) %>% 
      dplyr::select(.data$year, .data$partner, .data$trade_val) %>%
-     dplyr::filter(year == max(.data$year)) %>% 
+     # dplyr::filter(year == max(.data$year)) %>% 
      dplyr::group_by(.data$year) %>%
-     dplyr::arrange(.data$year, -.data$trade_val) %>% 
-     dplyr::slice(1:20) %>% 
+     dplyr::top_n(10, .data$trade_val) %>% 
+     dplyr::arrange(-.data$year, -.data$trade_val) %>% 
      echarts4r::e_charts(x = partner) %>%
      echarts4r::e_bar(serie = trade_val,itemStyle = list(color = "#ff9500")) %>% 
-     # echarts4r::e_flip_coords() %>% 
+     echarts4r::e_flip_coords() %>%
      echarts4r::e_tooltip(trigger = "axis") %>% 
-     echarts4r::e_legend(show = TRUE, orient = "vertical", right = 10, top = 20, bottom = 20, textStyle = list(color = "white")) %>% 
+     echarts4r::e_legend(show = TRUE, 
+                         orient = "vertical",
+                         right = 10, 
+                         top = 20,
+                         bottom = 20,
+                         textStyle = list(color = "white"),
+                         selectedMode = "single") %>% 
      echarts4r::e_theme(echarts_theme) 
-     # echarts4r::e_x_axis(axisLabel = list(color = "green"))
    
    dt
 }

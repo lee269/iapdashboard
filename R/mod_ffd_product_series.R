@@ -46,17 +46,23 @@ echarts_product_series <- function(country){
     dplyr::filter(.data$reporter_iso == country) %>% 
     dplyr::select(.data$year, .data$commodity_code, .data$commodity, .data$trade_val) %>% 
     dplyr::mutate(commodity = paste0(.data$commodity, " (", .data$commodity_code, ")")) %>%
-    dplyr::filter(year == max(.data$year)) %>% 
     dplyr::select(.data$year, .data$commodity, .data$trade_val) %>%  
+    # dplyr::filter(year == max(.data$year)) %>% 
     dplyr::group_by(.data$year) %>%
-    dplyr::arrange(.data$year, -.data$trade_val) %>% 
-    dplyr::slice(1:20) %>% 
+    dplyr::top_n(5, .data$trade_val) %>% 
+    dplyr::arrange(-.data$year, -.data$trade_val) %>% 
     # dplyr::arrange(.data$trade_val) %>% 
     echarts4r::e_charts(x = commodity) %>%
-    echarts4r::e_bar(serie = trade_val) %>% 
-    # echarts4r::e_flip_coords() %>%
+    echarts4r::e_bar(serie = trade_val, itemStyle = list(color = "#ff9500")) %>% 
+    echarts4r::e_flip_coords() %>%
     echarts4r::e_tooltip(trigger = "axis") %>% 
-    echarts4r::e_legend(show = TRUE, orient = "vertical", right = 10, top = 20, bottom = 20, textStyle = list(color = "white")) %>% 
+    echarts4r::e_legend(show = TRUE, 
+                        orient = "vertical",
+                        right = 10,
+                        top = 20,
+                        bottom = 20,
+                        textStyle = list(color = "white"),
+                        selectedMode = "single") %>% 
     echarts4r::e_theme(echarts_theme)
   
   dt
