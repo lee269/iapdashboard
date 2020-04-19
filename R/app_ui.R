@@ -3,23 +3,48 @@ app_ui <- function() {
 
 # UI elements -------------------------------------------------------------
 
+
+# Universal ---------------------------------------------------------------
+
   # Country select dropdown
   country_selector <- tagList(mod_country_select_ui("country_select_ui_1"))
-  
+
+
+# Home tab ----------------------------------------------------------------
+
   # Flag card
-  flag_section <- shinyMobile::f7Card(
+  flag_section_home <- shinyMobile::f7Card(
     splitLayout(cellWidths = c(140, 140, 300),
-                mod_country_flag_ui("country_flag_ui_1"),
-                mod_country_map_ui("country_map_ui_1"),
-                tags$div(mod_wb_indicator_text_ui("wb_indicator_text_ui_pop"),
-                         mod_wb_indicator_text_ui("wb_indicator_text_ui_gdp"),
-                         mod_wb_indicator_text_ui("wb_indicator_text_ui_imports"),
-                         mod_wb_indicator_text_ui("wb_indicator_text_ui_bus_ease"),
-                         mod_wb_indicator_text_ui("wb_indicator_text_ui_food_imports")
+                mod_country_flag_ui("country_flag_ui_home"),
+                mod_country_map_ui("country_map_ui_home"),
+                tags$div(mod_wb_indicator_text_ui("wb_indicator_text_ui_pop_home"),
+                         mod_wb_indicator_text_ui("wb_indicator_text_ui_gdp_home"),
+                         mod_wb_indicator_text_ui("wb_indicator_text_ui_imports_home"),
+                         mod_wb_indicator_text_ui("wb_indicator_text_ui_bus_ease_home"),
+                         mod_wb_indicator_text_ui("wb_indicator_text_ui_food_imports_home")
                          )
                 )
   )
+
+
+# Details tab -------------------------------------------------------------
+
+  # Flag card
+  flag_section_details <- shinyMobile::f7Card(
+    splitLayout(cellWidths = c(140, 140, 300),
+                mod_country_flag_ui("country_flag_ui_details"),
+                mod_country_map_ui("country_map_ui_details"),
+                tags$div(mod_wb_indicator_text_ui("wb_indicator_text_ui_pop_details"),
+                         mod_wb_indicator_text_ui("wb_indicator_text_ui_gdp_details"),
+                         mod_wb_indicator_text_ui("wb_indicator_text_ui_imports_details"),
+                         mod_wb_indicator_text_ui("wb_indicator_text_ui_bus_ease_details"),
+                         mod_wb_indicator_text_ui("wb_indicator_text_ui_food_imports_details")
+                )
+    )
+  )   
+   
   
+   
   # World Bank indicator card
   wb_section <- shinyMobile::f7Card(
                                     # mod_wb_indicator_text_ui("wb_indicator_text_ui_pop"),
@@ -99,7 +124,7 @@ app_ui <- function() {
                               # top row
                               shinyMobile::f7Row(
                                 shinyMobile::f7Col(
-                                  flag_section
+                                  flag_section_home
                                 )
                               ),
                               # second row
@@ -114,6 +139,11 @@ app_ui <- function() {
                             ), #close home tab
                             shinyMobile::f7Tab(
                               tabName = "Details",
+                              shinyMobile::f7Row(
+                                shinyMobile::f7Col(
+                                  flag_section_details
+                                )
+                              ),
                               shinyMobile::f7Row(
                                 shinyMobile::f7Col(
                                  top_country_chart 
