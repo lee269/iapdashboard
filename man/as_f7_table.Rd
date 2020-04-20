@@ -12,6 +12,7 @@ as_f7_table(df, card = FALSE)
 \item{card}{Whether to use as card.}
 }
 \description{
-Create shinyMobile table.
+Create shinyMobile table.Plagiarised from
+https://github.com/JohnCoene/coronavirus/blob/master/R/utils.R
 }
 \keyword{internal}

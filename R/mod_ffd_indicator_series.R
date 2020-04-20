@@ -55,7 +55,7 @@ mod_ffd_indicator_series_server <- function(input, output, session, country){
       echarts4r::e_toolbox_feature(feature = "dataView") %>% 
       echarts4r::e_legend(show = TRUE, textStyle = list(color = "white")) %>% 
       echarts4r::e_title(text = as.character(echarts4r::e_country_names(cns, country, type = "iso3c")), textStyle = list(color = "white")) %>% 
-      echarts4r::e_text_style(color = "white") 
+      echarts4r::e_text_style(color = "white")
     
     
     # DT::datatable(ffd_series(),escape = FALSE, options = list(dom = "t"), rownames = FALSE) 
