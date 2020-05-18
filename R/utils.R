@@ -1,7 +1,8 @@
 # constants
 echarts_theme <- "dark"
 
-
+# Useful link to some iso3 groupings
+# https://github.com/kjhealy/covid/blob/master/covid.Rmd
 
 #' RAG status
 #' 
