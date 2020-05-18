@@ -7,8 +7,14 @@
 \usage{
 mod_wb_indicator_text_ui(id)
 
-mod_wb_indicator_text_server(input, output, session, country, indicator,
-  format = "integer")
+mod_wb_indicator_text_server(
+  input,
+  output,
+  session,
+  country,
+  indicator,
+  format = "integer"
+)
 }
 \arguments{
 \item{id}{shiny id}
