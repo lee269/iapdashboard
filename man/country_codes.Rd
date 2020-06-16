@@ -4,7 +4,9 @@
 \name{country_codes}
 \alias{country_codes}
 \title{Country details}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 246 rows and 4 columns.}
+\format{
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 246 rows and 4 columns.
+}
 \source{
 Comtrade \url{http://comtrade.un.org}
 }
